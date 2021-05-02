@@ -1,0 +1,61 @@
+const getUserChoice = userInput => {
+  userInput = userInput.toLowerCase();
+  if (userInput === 'rock' || userInput === 'paper' || userInput === 'scissors' || userInput === 'chuck norris') {
+    return userInput;
+  } else {
+    console.log(`Pick a valid choice dum dum.`);
+  }
+};
+
+function getComputerChoice() {
+  let randomNumber = Math.floor(Math.random() * 3);
+  switch (randomNumber) {
+    case 0:
+      return `rock`;
+    case 1:
+      return `paper`;
+    case 2:
+      return `scissors`;
+  }
+};
+
+function determineWinner(userChoice, computerChoice) {
+  if (userChoice === 'chuck norris') {
+    return 'Norris always wins.';
+  }  
+  
+  if (userChoice === computerChoice) {
+    return 'It\'s a tie!';
+  }
+  
+  if (userChoice === 'rock') {
+    if (computerChoice === 'paper') {
+    return `You picked ${userChoice}. The computer picked ${computerChoice}. You lose. Better luck next time!`
+  } else {
+    return `You picked ${userChoice}. The computer picked ${computerChoice}. You win!`}
+  } 
+
+  if (userChoice === 'paper') {
+    if (computerChoice === 'scissors') {
+    return `You picked ${userChoice}. The computer picked ${computerChoice}. You lose. Better luck next time!`
+  } else {
+    return `You picked ${userChoice}. The computer picked ${computerChoice}. You win!`}
+  }
+
+if (userChoice === 'scissors') {
+    if (computerChoice === 'rock') {
+    return `You picked ${userChoice}. The computer picked ${computerChoice}. You lose. Better luck next time!`
+  } else {
+    return `You picked ${userChoice}. The computer picked ${computerChoice}. You win!`}
+  }
+};
+
+const playGame = () => {
+  const userChoice = getUserChoice('chuck norris');
+  const computerChoice = getComputerChoice();
+  console.log(`You threw ${userChoice}`);
+  console.log(`Computron 9000 threw ${computerChoice}`);
+  console.log(determineWinner(userChoice, computerChoice))
+};
+
+playGame();
